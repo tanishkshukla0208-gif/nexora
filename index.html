@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>NEXORA — Where Innovation Begins | Interactive Future Tech Journey</title>
+  <meta name="description" content="NEXORA is a futuristic technology discovery and innovation platform representing a first-year BTech CSE student's journey into AI, Cloud, Robotics, and the future of engineering." />
+  <meta name="author" content="Tanishk Shukla" />
+  <meta name="keywords" content="NEXORA, Tanishk Shukla, GLA University, Computer Science, Technology Discovery, Innovation Lab, Roadmap, AI, Robotics, Web Development" />
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="NEXORA — Where Innovation Begins" />
+  <meta property="og:description" content="Explore ideas. Discover technology. Build the future. An interactive technology discovery experience by Tanishk Shukla." />
+  <meta property="og:site_name" content="NEXORA" />
+  
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300E5FF'/%3E%3Cstop offset='100%25' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='45' fill='%23070B18' stroke='url(%23g)' stroke-width='6'/%3E%3Cpolygon points='50,22 76,72 24,72' fill='none' stroke='url(%23g)' stroke-width='5'/%3E%3Ccircle cx='50' cy='52' r='8' fill='%2300E5FF'/%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body class="bg-dark text-light antialiased selection-cyan">
+  <!-- Interactive Ambient Cursor Lighting (Desktop) -->
+  <div class="cursor-ambient-glow" id="cursorAmbientGlow" aria-hidden="true"></div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-track" aria-hidden="true">
+    <div class="scroll-progress-fill" id="scrollProgressFill"></div>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="nav-container">
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo" aria-label="NEXORA Home">
+        <div class="logo-mark">
+          <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00E5FF" />
+                <stop offset="50%" stop-color="#3B82F6" />
+                <stop offset="100%" stop-color="#8B5CF6" />
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="44" stroke="url(#logoGrad)" stroke-width="8" stroke-dasharray="180 50" class="logo-spin-ring" />
+            <polygon points="50,24 74,72 26,72" stroke="#00E5FF" stroke-width="6" fill="none" />
+            <circle cx="50" cy="54" r="8" fill="#8B5CF6" />
+          </svg>
+        </div>
+        <div class="logo-text-group">
+          <span class="logo-title">NEXORA</span>
+          <span class="logo-badge">INNOVATION</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#explore" class="nav-link">Technologies</a></li>
+          <li><a href="#lab" class="nav-link">Innovation Lab</a></li>
+          <li><a href="#roadmap" class="nav-link">Roadmap</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Action Pill -->
+      <div class="nav-actions">
+        <!-- Saved Ideas Drawer Trigger -->
+        <button id="navSavedIdeasBtn" class="saved-ideas-pill-btn" aria-label="View Saved Ideas">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+          </svg>
+          <span class="pill-label">Saved</span>
+          <span class="pill-badge" id="navFavoritesCount">0</span>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuToggle" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileNavMenu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobileNavMenu" aria-hidden="true">
+      <ul class="mobile-nav-list">
+        <li><a href="#home" class="mobile-nav-link">Home</a></li>
+        <li><a href="#explore" class="mobile-nav-link">Technologies</a></li>
+        <li><a href="#lab" class="mobile-nav-link">Innovation Lab</a></li>
+        <li><a href="#roadmap" class="mobile-nav-link">Roadmap</a></li>
+        <li><a href="#about" class="mobile-nav-link">About Creator</a></li>
+        <li><a href="#contact" class="mobile-nav-link">Contact & Connect</a></li>
+      </ul>
+      <div class="mobile-drawer-footer">
+        <span class="mobile-meta-text">Tanishk Shukla • GLA University (Section AN)</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="mainContent">
+    <!-- SECTION A — HOME (HERO) -->
+    <section id="home" class="hero-section">
+      <!-- Animated Background Canvas -->
+      <div class="hero-bg-grid" aria-hidden="true"></div>
+      <div class="hero-gradient-orb orb-1" aria-hidden="true"></div>
+      <div class="hero-gradient-orb orb-2" aria-hidden="true"></div>
+
+      <div class="container hero-container">
+        <!-- Hero Content Column -->
+        <div class="hero-content">
+          <!-- College & Program Badge -->
+          <div class="hero-badge animate-hero-badge">
+            <span class="badge-dot"></span>
+            <span class="badge-text">First-Year BTech CSE Innovation Initiative • GLA University</span>
+          </div>
+
+          <!-- Main Headlines -->
+          <h1 class="hero-title animate-hero-title">
+            Every Great Innovation Begins With <span class="gradient-text-glow">Curiosity.</span>
+          </h1>
+
+          <p class="hero-subtitle animate-hero-subtitle">
+            Explore ideas. Discover technology. Build the future.
+          </p>
+
+          <p class="hero-description animate-hero-desc">
+            Welcome to <strong class="text-cyan">NEXORA</strong>—an interactive platform crafted to illuminate the fundamental frontiers of modern computer science. From intelligent algorithms to quantum clouds, this is where a student's journey from learning syntax turns into engineering impact.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="hero-cta-group animate-hero-cta">
+            <a href="#explore" class="btn btn-primary btn-glow">
+              <span>Explore the Future</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            
+            <a href="#lab" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10 2v7.31"></path>
+                <path d="M14 9.3V2"></path>
+                <path d="M8.5 2h7"></path>
+                <path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path>
+                <path d="M5.52 16h12.96"></path>
+              </svg>
+              <span>Enter Innovation Lab</span>
+            </a>
+          </div>
+
+          <!-- Telemetry Stats Row -->
+          <div class="hero-telemetry animate-hero-telemetry">
+            <div class="telemetry-item">
+              <span class="telemetry-number" data-target="6">6</span>
+              <span class="telemetry-label">Tech Domains</span>
+            </div>
+            <div class="telemetry-divider" aria-hidden="true"></div>
+            <div class="telemetry-item">
+              <span class="telemetry-number" data-target="100">100%</span>
+              <span class="telemetry-label">Client-Side</span>
+            </div>
+            <div class="telemetry-divider" aria-hidden="true"></div>
+            <div class="telemetry-item">
+              <span class="telemetry-number" data-target="6">6</span>
+              <span class="telemetry-label">Milestone Stages</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero 3D Graphic Column -->
+        <div class="hero-visual-wrapper animate-hero-visual">
+          <div class="visual-canvas-container" id="heroThreeContainer">
+            <!-- Three.js Canvas injected via main.js -->
+            <div class="visual-fallback" id="threeFallback" aria-hidden="true">
+              <div class="fallback-glow-sphere"></div>
+              <div class="fallback-orbit-ring ring-1"></div>
+              <div class="fallback-orbit-ring ring-2"></div>
+              <div class="fallback-orbit-ring ring-3"></div>
+            </div>
+          </div>
+          <!-- Visual Floating HUD Badges -->
+          <div class="hud-floating-chip chip-top-left" aria-hidden="true">
+            <span class="chip-dot dot-cyan"></span>
+            <span>SYSTEM: ONLINE</span>
+          </div>
+          <div class="hud-floating-chip chip-bottom-right" aria-hidden="true">
+            <span class="chip-dot dot-violet"></span>
+            <span>60 FPS INTERACTION</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated Scroll Down Prompt -->
+      <a href="#explore" class="hero-scroll-indicator" aria-label="Scroll to Explore section">
+        <span class="scroll-text">DISCOVER MORE</span>
+        <div class="mouse-icon">
+          <div class="mouse-wheel"></div>
+        </div>
+        <svg class="chevron-bounce" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </a>
+    </section>
+
+    <!-- SECTION B — EXPLORE TECHNOLOGIES -->
+    <section id="explore" class="section-padding bg-darker">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <div class="section-badge">
+            <span class="section-badge-pill">TECHNOLOGY RADAR</span>
+          </div>
+          <h2 class="section-title">
+            Discover the Technologies <span class="gradient-text-cyan">Shaping Tomorrow.</span>
+          </h2>
+          <p class="section-subtitle">
+            Explore six foundational technology pillars driving the current and future computing revolution. Click any card to inspect technical architectures, real-world impact, and beginner starter paths.
+          </p>
+        </div>
+
+        <!-- 6 Interactive Technology Cards Grid -->
+        <div class="tech-cards-grid" id="techCardsGrid">
+          <!-- Injected dynamically via JS from TECHNOLOGIES_DATA with accessible modal triggers -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION C — INNOVATION LAB (PROJECT IDEA GENERATOR) -->
+    <section id="lab" class="section-padding bg-dark relative-overflow">
+      <div class="ambient-glow-circle lab-glow-1" aria-hidden="true"></div>
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <div class="section-badge">
+            <span class="section-badge-pill">THE INNOVATION LAB</span>
+          </div>
+          <h2 class="section-title">
+            Turn Curiosity Into <span class="gradient-text-violet">Creation.</span>
+          </h2>
+          <p class="section-subtitle">
+            Unsure what to build? Select your preferred technology, target skill level, and purpose to generate an actionable, structured project blueprint with step-by-step guidance.
+          </p>
+        </div>
+
+        <!-- Interactive Generator Suite -->
+        <div class="generator-card glass-panel">
+          <!-- Control Panel -->
+          <div class="generator-controls">
+            <!-- Filter 1: Technology Category -->
+            <div class="control-group">
+              <label class="control-label" for="categorySelect">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+                <span>Technology Domain</span>
+              </label>
+              <div class="custom-select-wrapper">
+                <select id="categorySelect" class="form-select">
+                  <option value="ai">Artificial Intelligence (AI)</option>
+                  <option value="web" selected>Web Development</option>
+                  <option value="robotics">Robotics and IoT</option>
+                  <option value="data">Data Science</option>
+                  <option value="cybersecurity">Cybersecurity</option>
+                  <option value="cloud">Cloud Computing</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Filter 2: Difficulty Level -->
+            <div class="control-group">
+              <label class="control-label" for="difficultySelect">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                <span>Experience Level</span>
+              </label>
+              <div class="custom-select-wrapper">
+                <select id="difficultySelect" class="form-select">
+                  <option value="beginner" selected>Beginner (First-Year Friendly)</option>
+                  <option value="intermediate">Intermediate (Expanding Horizons)</option>
+                  <option value="advanced">Advanced (Deep Engineering)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Filter 3: Project Goal -->
+            <div class="control-group">
+              <label class="control-label" for="goalSelect">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="6"></circle>
+                  <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+                <span>Project Objective</span>
+              </label>
+              <div class="custom-select-wrapper">
+                <select id="goalSelect" class="form-select">
+                  <option value="skill">Learn a New Skill</option>
+                  <option value="problem" selected>Solve a Real Problem</option>
+                  <option value="portfolio">Build a Showcase Portfolio Piece</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <div class="generator-action-row text-center">
+            <button id="generateIdeaBtn" class="btn btn-primary btn-large btn-glow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              <span>Generate My Idea</span>
+            </button>
+          </div>
+
+          <!-- Dynamic Result Display Container -->
+          <div class="generator-output-area" id="generatorOutputArea">
+            <div class="generator-result-card" id="projectResultCard">
+              <!-- Content filled dynamically via main.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION D — LEARNING ROADMAP -->
+    <section id="roadmap" class="section-padding bg-darker">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <div class="section-badge">
+            <span class="section-badge-pill">LEARNING JOURNEY</span>
+          </div>
+          <h2 class="section-title">
+            From Beginner to <span class="gradient-text-blue">Innovator.</span>
+          </h2>
+          <p class="section-subtitle">
+            A structured, self-paced roadmap engineered for first-year engineering students. Click any milestone to unpack technical skills, suggested challenges, and track your completion progress in real-time.
+          </p>
+        </div>
+
+        <!-- Progress Tracker Dashboard -->
+        <div class="roadmap-tracker-card glass-panel">
+          <div class="tracker-header">
+            <div class="tracker-info">
+              <span class="tracker-label">Your Engineering Trajectory</span>
+              <h3 class="tracker-status" id="roadmapProgressText">0 of 6 Milestones Completed</h3>
+            </div>
+            <div class="tracker-stats-badge">
+              <span class="stats-percentage" id="roadmapPercentageText">0%</span>
+              <span class="stats-subtext">PROGRESS</span>
+            </div>
+          </div>
+          <!-- Progress Bar Track -->
+          <div class="tracker-bar-track">
+            <div class="tracker-bar-fill" id="roadmapProgressBar" style="width: 0%;"></div>
+          </div>
+          <div class="tracker-footer-actions">
+            <span class="tracker-hint">💡 Progress is saved locally in your browser.</span>
+            <button id="resetRoadmapBtn" class="btn-text-subtle" title="Reset all roadmap milestones">
+              Reset Progress
+            </button>
+          </div>
+        </div>
+
+        <!-- 6 Interactive Roadmap Stages -->
+        <div class="roadmap-timeline" id="roadmapTimeline">
+          <!-- Populated dynamically via main.js from ROADMAP_STAGES -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION E — ABOUT THE CREATOR -->
+    <section id="about" class="section-padding bg-dark relative-overflow">
+      <div class="ambient-glow-circle about-glow" aria-hidden="true"></div>
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <div class="section-badge">
+            <span class="section-badge-pill">STUDENT INVENTOR</span>
+          </div>
+          <h2 class="section-title">
+            Behind Every Innovation Is a <span class="gradient-text-cyan">Beginning.</span>
+          </h2>
+          <p class="section-subtitle">
+            Get to know the student developer behind NEXORA and the vision of continuous learning.
+          </p>
+        </div>
+
+        <!-- Creator Profile Glass Showcase -->
+        <div class="creator-showcase glass-panel">
+          <div class="creator-grid">
+            <!-- Creator Profile Info Column -->
+            <div class="creator-bio-column">
+              <div class="creator-avatar-wrap">
+                <div class="avatar-glow-ring" aria-hidden="true"></div>
+                <div class="avatar-initials">TS</div>
+              </div>
+
+              <div class="creator-meta">
+                <h3 class="creator-name">Tanishk Shukla</h3>
+                <p class="creator-degree">First-year BTech Computer Science Student</p>
+                <div class="creator-institution">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                  </svg>
+                  <span>GLA University, Mathura</span>
+                  <span class="creator-section-pill">Section: AN</span>
+                </div>
+              </div>
+
+              <!-- Creator Tagline -->
+              <blockquote class="creator-tagline">
+                "Exploring Technology. Learning Every Day. Building Tomorrow."
+              </blockquote>
+
+              <p class="creator-bio-text">
+                As a first-year Computer Science and Engineering student at GLA University, Mathura, I am driven by the belief that software is the most versatile creative medium in human history. NEXORA is built to represent the humble, ambitious start of that journey—exploring artificial intelligence, clean systems architecture, and modern web development while learning something new every single day.
+              </p>
+
+              <!-- Technical Interests Tags -->
+              <div class="creator-interests">
+                <span class="interests-heading">Academic & Tech Interests:</span>
+                <div class="interests-tags-wrap">
+                  <span class="interest-tag">Artificial Intelligence</span>
+                  <span class="interest-tag">Data Science</span>
+                  <span class="interest-tag">Programming</span>
+                  <span class="interest-tag">Web Development</span>
+                  <span class="interest-tag">Emerging Technologies</span>
+                </div>
+              </div>
+
+              <!-- OFFICIAL LINKEDIN INTEGRATION BUTTON -->
+              <div class="creator-linkedin-wrap">
+                <a 
+                  href="https://www.linkedin.com/in/tanishk-shukla-399682357/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="btn-linkedin-connect"
+                  id="creatorLinkedInBtn"
+                  aria-label="Connect with Tanishk Shukla on LinkedIn (opens in new tab)"
+                >
+                  <!-- Official LinkedIn SVG Icon -->
+                  <svg class="linkedin-svg-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                  <span class="linkedin-btn-text">Connect on LinkedIn</span>
+                  <!-- Animated Arrow Icon -->
+                  <svg class="linkedin-arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Creator Timeline & Philosophy Column -->
+            <div class="creator-journey-column">
+              <h4 class="journey-title">The Engineering Trajectory</h4>
+              <div class="trajectory-timeline">
+                <div class="trajectory-node">
+                  <div class="node-indicator">1</div>
+                  <div class="node-content">
+                    <h5>Curiosity</h5>
+                    <p>Fascinated by how code turns abstract mathematical ideas into tangible reality.</p>
+                  </div>
+                </div>
+                <div class="trajectory-node">
+                  <div class="node-indicator">2</div>
+                  <div class="node-content">
+                    <h5>Learning</h5>
+                    <p>Mastering core computer science foundations, algorithms, and programming logic.</p>
+                  </div>
+                </div>
+                <div class="trajectory-node">
+                  <div class="node-indicator">3</div>
+                  <div class="node-content">
+                    <h5>Experimentation</h5>
+                    <p>Tinkering with modern developer tools, APIs, frameworks, and interface design.</p>
+                  </div>
+                </div>
+                <div class="trajectory-node">
+                  <div class="node-indicator">4</div>
+                  <div class="node-content">
+                    <h5>Building</h5>
+                    <p>Architecting production-ready interactive applications like NEXORA from scratch.</p>
+                  </div>
+                </div>
+                <div class="trajectory-node">
+                  <div class="node-indicator">5</div>
+                  <div class="node-content">
+                    <h5>Innovation</h5>
+                    <p>Striving toward building impactful technologies that empower students and society.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Inspirational Closing Statement Card -->
+              <div class="quote-box">
+                <svg class="quote-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                </svg>
+                <p class="quote-text">
+                  "Every great innovation begins when someone is brave enough to be a beginner, open enough to learn, and persistent enough to keep building."
+                </p>
+                <span class="quote-author">— Tanishk Shukla</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION F — CONTACT AND FOOTER -->
+    <section id="contact" class="section-padding bg-darker">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <div class="section-badge">
+            <span class="section-badge-pill">COLLABORATION</span>
+          </div>
+          <h2 class="section-title">
+            Let's Build the Future <span class="gradient-text-glow">Together.</span>
+          </h2>
+          <p class="section-subtitle">
+            Whether you want to collaborate on a student hackathon, share feedback on NEXORA, or connect with a fellow tech enthusiast, drop a message below.
+          </p>
+        </div>
+
+        <!-- Contact Form Container -->
+        <div class="contact-card-wrapper glass-panel">
+          <div class="contact-intro-bar">
+            <div class="intro-indicator">
+              <span class="status-live-pulse"></span>
+              <span class="intro-label">Direct Communication Channel</span>
+            </div>
+            <span class="intro-note">Demo & Mailto Client Mode • Student Project</span>
+          </div>
+
+          <form id="contactForm" class="contact-form" novalidate>
+            <div class="form-grid">
+              <!-- Name Input -->
+              <div class="form-group">
+                <label for="contactName" class="form-label">Your Name <span class="text-coral">*</span></label>
+                <div class="input-wrap">
+                  <input 
+                    type="text" 
+                    id="contactName" 
+                    name="name" 
+                    class="form-input" 
+                    placeholder="e.g. Alex Mercer" 
+                    required 
+                    autocomplete="name"
+                  />
+                  <div class="input-focus-border"></div>
+                </div>
+                <span class="form-error-msg" id="nameError"></span>
+              </div>
+
+              <!-- Email Input -->
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">Email Address <span class="text-coral">*</span></label>
+                <div class="input-wrap">
+                  <input 
+                    type="email" 
+                    id="contactEmail" 
+                    name="email" 
+                    class="form-input" 
+                    placeholder="e.g. alex@university.edu" 
+                    required 
+                    autocomplete="email"
+                  />
+                  <div class="input-focus-border"></div>
+                </div>
+                <span class="form-error-msg" id="emailError"></span>
+              </div>
+            </div>
+
+            <!-- Subject Input -->
+            <div class="form-group">
+              <label for="contactSubject" class="form-label">Subject / Topic</label>
+              <div class="input-wrap">
+                <input 
+                  type="text" 
+                  id="contactSubject" 
+                  name="subject" 
+                  class="form-input" 
+                  placeholder="e.g. Collaboration on AI / Web Project" 
+                />
+                <div class="input-focus-border"></div>
+              </div>
+            </div>
+
+            <!-- Message Textarea -->
+            <div class="form-group">
+              <label for="contactMessage" class="form-label">Your Message <span class="text-coral">*</span></label>
+              <div class="input-wrap">
+                <textarea 
+                  id="contactMessage" 
+                  name="message" 
+                  rows="4" 
+                  class="form-input form-textarea" 
+                  placeholder="Share your thoughts, suggestions, or ideas..." 
+                  required
+                ></textarea>
+                <div class="input-focus-border"></div>
+              </div>
+              <span class="form-error-msg" id="messageError"></span>
+            </div>
+
+            <!-- Submission Row -->
+            <div class="form-submit-row">
+              <button type="submit" id="contactSubmitBtn" class="btn btn-primary btn-large btn-glow">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                <span>Send Message</span>
+              </button>
+              <div class="form-status-feedback" id="formFeedback" role="status" aria-live="polite"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <!-- Footer Brand Column -->
+      <div class="footer-brand-col">
+        <a href="#home" class="brand-logo footer-logo" aria-label="NEXORA Home">
+          <div class="logo-mark">
+            <svg width="24" height="24" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+              <polygon points="50,24 74,72 26,72" stroke="#00E5FF" stroke-width="8" fill="none" />
+              <circle cx="50" cy="54" r="8" fill="#8B5CF6" />
+            </svg>
+          </div>
+          <span class="logo-title">NEXORA</span>
+        </a>
+        <p class="footer-tagline">Where Innovation Begins</p>
+        <p class="footer-subtext">An Interactive Journey Into the Future of Technology.</p>
+        
+        <!-- Official Creator Credit -->
+        <div class="footer-creator-badge">
+          <span>Designed & Developed by <strong>Tanishk Shukla</strong></span>
+          <span class="footer-meta-line">First-Year BTech CSE • GLA University, Mathura (Section: AN)</span>
+        </div>
+      </div>
+
+      <!-- Quick Navigation Column -->
+      <div class="footer-nav-col">
+        <h5 class="footer-heading">Navigation</h5>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#explore">Technologies</a></li>
+          <li><a href="#lab">Innovation Lab</a></li>
+          <li><a href="#roadmap">Learning Roadmap</a></li>
+          <li><a href="#about">About Creator</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Assignment & Tech Spec Column -->
+      <div class="footer-meta-col">
+        <h5 class="footer-heading">Project Information</h5>
+        <ul class="footer-specs">
+          <li>Assignment: <strong>Design, Develop & Host</strong></li>
+          <li>Suggested Slug: <code>tanishk-shukla-an-nexora</code></li>
+          <li>Stack: <strong>HTML5 • Modern CSS • Vanilla JS • Vite • GSAP</strong></li>
+          <li>Deployment: <strong>Vercel • Netlify • GitHub Pages</strong></li>
+        </ul>
+
+        <!-- Connect Column with Official LinkedIn Icon -->
+        <div class="footer-social-wrap">
+          <span class="social-label">Connect with Tanishk:</span>
+          <div class="footer-social-links">
+            <a 
+              href="https://www.linkedin.com/in/tanishk-shukla-399682357/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="footer-social-btn footer-linkedin-btn"
+              aria-label="Tanishk Shukla on LinkedIn (opens in new tab)"
+              title="Connect with Tanishk Shukla on LinkedIn"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Copyright & Back-to-Top -->
+    <div class="footer-bottom-bar">
+      <div class="container footer-bottom-container">
+        <p class="copyright-text">
+          &copy; <span id="currentYear"></span> <strong>NEXORA</strong> — Academic Assignment Project by Tanishk Shukla (GLA University, Mathura). All rights reserved.
+        </p>
+
+        <!-- Back to Top Button -->
+        <button id="backToTopBtn" class="back-to-top-btn" aria-label="Back to top of page">
+          <span>Back to Top</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ACCESSIBLE TECHNOLOGY DETAILS MODAL -->
+  <div 
+    id="techDetailModal" 
+    class="modal-backdrop" 
+    role="dialog" 
+    aria-modal="true" 
+    aria-hidden="true" 
+    aria-labelledby="modalTechTitle"
+  >
+    <div class="modal-card glass-panel" id="modalCard">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-header-info">
+          <div class="modal-icon-wrap" id="modalTechIcon"></div>
+          <div>
+            <span class="modal-badge-pill" id="modalTechBadge">Neural Frontier</span>
+            <h3 class="modal-title" id="modalTechTitle">Technology Title</h3>
+          </div>
+        </div>
+        <button id="closeModalBtn" class="modal-close-btn" aria-label="Close technology details dialog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div class="modal-body" id="modalTechBody">
+        <!-- Dynamically injected content -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SAVED IDEAS FAVORITES DRAWER -->
+  <div 
+    id="favoritesDrawer" 
+    class="drawer-backdrop" 
+    role="dialog" 
+    aria-modal="true" 
+    aria-hidden="true" 
+    aria-labelledby="drawerTitle"
+  >
+    <div class="drawer-panel glass-panel">
+      <div class="drawer-header">
+        <div class="drawer-header-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+          </svg>
+          <h3 id="drawerTitle">Saved Innovation Ideas</h3>
+          <span class="drawer-count-badge" id="drawerCountBadge">0</span>
+        </div>
+        <button id="closeDrawerBtn" class="modal-close-btn" aria-label="Close saved ideas panel">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Drawer Content -->
+      <div class="drawer-body" id="favoritesDrawerBody">
+        <!-- Dynamic saved cards or empty state -->
+      </div>
+
+      <div class="drawer-footer" id="drawerFooter">
+        <button id="clearAllFavoritesBtn" class="btn-subtle-danger">Clear All Saved Ideas</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLOBAL TOAST NOTIFICATION CONTAINER -->
+  <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Main JavaScript Bundle -->
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
